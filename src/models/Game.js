@@ -15,6 +15,10 @@ class Game {
     this.playerPicks.push(squareID);
     return result;
   }
+
+  isWon(){
+    return this.player.ships.length === 0;
+  }
 }
 
 module.exports = Game;

@@ -46,5 +46,21 @@ describe('ship', function() {
     assert.strictEqual(false, game.processClick(30));
   })
 
+  it('should know game is not won', function(){
+    assert.strictEqual(false, game.isWon())
+  })
+
+  it('should know game is  won', function(){
+    game.processClick(1)
+    game.processClick(2)
+    game.processClick(3)
+    game.processClick(8)
+    game.processClick(9)
+    game.processClick(13)
+    assert.strictEqual(true, game.isWon())
+  })
+
+
+
   }
 )
