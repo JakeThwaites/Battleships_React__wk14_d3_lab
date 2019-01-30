@@ -32,3 +32,23 @@ button {
 .Miss{
   background-color: red;
 }
+
+h1 {
+  animation: App-logo-spin infinite 3s linear;
+  height: 40vmin;
+  color: red;
+  font-size: 80px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    font-size: 20px;
+    color: red;
+    transform: rotate(0deg);
+  }
+  to {
+    font-size: 80px;
+    color: blue;
+    transform: rotate(360deg);
+  }
+}

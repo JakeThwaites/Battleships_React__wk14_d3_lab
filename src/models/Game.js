@@ -19,6 +19,9 @@ class Game {
       const result = this.player.checkIfHit(squareID);
       this.playerPicks.push(squareID);
       PubSub.publish("Game:clickProcessed", result);
+      if (this.isWon()) {
+        PubSub.publish("Game:gameWon", true);
+      }
     }
   }
 

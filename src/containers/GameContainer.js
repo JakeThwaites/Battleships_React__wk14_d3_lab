@@ -3,13 +3,15 @@ import ComputerInfo from "../components/ComputerInfo.js";
 import GameGrid from "../components/GameGrid.js";
 import PlayerInfo from "../components/PlayerInfo.js";
 import PubSub from "../helpers/PubSub.js";
+import Win from "../components/Win.js";
 
 class GameContainer extends Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      hashOfClicks: {}
+      hashOfClicks: {},
+      gameWon: false
     }
     this.currentClick = null;
     this.bindEvents();
@@ -20,6 +22,14 @@ class GameContainer extends Component {
       const clickResult = event.detail;
       this.processResult(clickResult);
     })
+
+    PubSub.subscribe("Game:gameWon", (event) => {
+      this.processWin()
+    })
+  }
+
+  processWin(){
+    this.setState({gameWon: true})
   }
 
   processResult(clickResult){
@@ -38,9 +48,7 @@ class GameContainer extends Component {
       <Fragment>
       <h2>Jake and Paul's Awesome Skirmish Vessels</h2>
       <GameGrid containerClickHandler={this.handleClick} currentClicks={this.state.hashOfClicks} clickable="true"/>
-      <ComputerInfo />
-
-      <PlayerInfo />
+      <Win gameWon={this.state.gameWon}/>
       </Fragment>
     );
   }
