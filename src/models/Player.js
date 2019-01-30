@@ -1,5 +1,3 @@
-import Ship from './Ship.js';
-
 
 class Player {
   constructor(ships){
