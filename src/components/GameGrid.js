@@ -2,17 +2,28 @@ import React, {Component} from 'react';
 import GridSquare from './GridSquare.js';
 
 class GameGrid extends Component {
+  constructor(props){
+    super(props);
 
-  // populateRows(){
-  //   const grid = getElementById("game-grid");
+    this.clickHandler = this.clickHandler.bind(this);
+  }
 
-  //
-  // }
+  clickHandler(squareId){
+    this.props.containerClickHandler(squareId);
+  }
 
   render(){
     const squares = [];
     for (var i = 0; i < 100; i++) {
-      squares.push(<GridSquare squareId={i}/>);
+      // const isClickable = {if (this.props.clickable="false") {return "disabled}"}
+      squares.push(
+        <GridSquare
+        key={i}
+        squareId={i}
+        clickHandler={this.clickHandler}
+        isClickable={this.props.clickable}
+        />
+      );
     }
 
     return (
