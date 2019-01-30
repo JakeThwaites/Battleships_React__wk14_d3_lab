@@ -9,10 +9,11 @@ class GameGrid extends Component {
   }
 
   clickHandler(squareId){
-    this.props.containerClickHandler(squareId);
+    this.props.containerClickHandler(parseInt(squareId));
   }
 
   render(){
+    console.log(this.props.currentClicks);
     const squares = [];
     for (var i = 0; i < 100; i++) {
       // const isClickable = {if (this.props.clickable="false") {return "disabled}"}
@@ -22,6 +23,7 @@ class GameGrid extends Component {
         squareId={i}
         clickHandler={this.clickHandler}
         isClickable={this.props.clickable}
+        clickValue={this.props.currentClicks[i]}
         />
       );
     }

@@ -8,19 +8,38 @@ class GameContainer extends Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      hashOfClicks: {}
+    }
+    this.currentClick = null;
+    this.bindEvents();
+  }
+
+  bindEvents(){
+    PubSub.subscribe("Game:clickProcessed", (event) => {
+      const clickResult = event.detail;
+      this.processResult(clickResult);
+    })
+  }
+
+  processResult(clickResult){
+    const currentClicks = this.state.hashOfClicks;
+    currentClicks[this.currentClick] = clickResult;
+    this.setState({hashOfClicks: currentClicks});
   }
 
   handleClick(squareId){
-    console.log(squareId);
+    this.currentClick = squareId;
+    PubSub.publish("GameContainer:click", parseInt(squareId));
   }
 
   render(){
     return (
       <Fragment>
       <h2>Jake and Paul's Awesome Skirmish Vessels</h2>
-      <GameGrid containerClickHandler={this.handleClick} clickable="true"/>
+      <GameGrid containerClickHandler={this.handleClick} currentClicks={this.state.hashOfClicks} clickable="true"/>
       <ComputerInfo />
-      <GameGrid clickable="false"/>
+
       <PlayerInfo />
       </Fragment>
     );

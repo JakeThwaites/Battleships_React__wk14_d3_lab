@@ -1,4 +1,4 @@
-const PubSub = require("../helpers/PubSub.js");
+import PubSub from "../helpers/PubSub.js";
 
 class Game {
   constructor(player){
@@ -6,14 +6,20 @@ class Game {
     this.playerPicks = [];
   }
 
+  bindEvents(){
+    PubSub.subscribe("GameContainer:click", (event) => {
+      this.processClick(event.detail);
+    })
+  }
+
   processClick(squareID){
     if (this.playerPicks.includes(squareID)) {
-      return null;
+      PubSub.publish("Game:clickProcessed", null);
+    } else {
+      const result = this.player.checkIfHit(squareID);
+      this.playerPicks.push(squareID);
+      PubSub.publish("Game:clickProcessed", result);
     }
-
-    const result = this.player.checkIfHit(squareID);
-    this.playerPicks.push(squareID);
-    return result;
   }
 
   isWon(){
@@ -21,4 +27,4 @@ class Game {
   }
 }
 
-module.exports = Game;
+export default Game;

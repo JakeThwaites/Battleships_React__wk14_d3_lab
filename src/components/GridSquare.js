@@ -12,11 +12,20 @@ class GridSquare extends Component {
   }
 
   render(){
-    // const isClickable = this.props.clickable === "true" ? "" : "disabled";
-    // let button = <button></button>
+
+    let clickClass = "";
+    if (this.props.clickValue == true){
+      clickClass = "Hit";
+    } else if (this.props.clickValue == false){
+      clickClass = "Miss";
+    }
     if (this.props.isClickable == "true") {
       return (
-        <button onClick={this.handleClick} value={this.props.squareId}></button>
+        <button
+        onClick={this.handleClick}
+        value={this.props.squareId}
+        className={clickClass}
+        ></button>
       );
     } else
       return( <button disabled></button>);

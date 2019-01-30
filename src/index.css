@@ -24,3 +24,11 @@ button {
   width: 20px;
   height: 20px;
 }
+
+.Hit{
+  background-color: green;
+}
+
+.Miss{
+  background-color: red;
+}
