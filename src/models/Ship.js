@@ -1,7 +1,7 @@
 
 class Ship {
-  constructor(){
-    this.squareIDs = [1,2,3];
+  constructor(arrayOfSquareIDs){
+    this.squareIDs = arrayOfSquareIDs;
 
   }
 
@@ -15,6 +15,9 @@ class Ship {
     return false;
   }
 
+  isSunk(){
+    return this.squareIDs.length === 0;
+  }
 }
 
 module.exports = Ship;
