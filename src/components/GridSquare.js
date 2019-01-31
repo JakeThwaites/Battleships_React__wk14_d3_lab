@@ -4,26 +4,32 @@ class GridSquare extends Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.button = null;
   }
 
   handleClick(event){
     const squareId = event.target.value;
     this.props.clickHandler(squareId);
+    let button = document.getElementById(this.button);
+    button.setAttribute("disabled", true);
+    console.log(button);
   }
 
   render(){
 
     let clickClass = "";
-    if (this.props.clickValue == true){
+    if (this.props.clickValue === true){
       clickClass = "Hit";
-    } else if (this.props.clickValue == false){
+    } else if (this.props.clickValue === false){
       clickClass = "Miss";
     }
-    if (this.props.isClickable == "true") {
+    if (this.props.isClickable === "true") {
+      this.button = this.props.squareId;
       return (
         <button
         onClick={this.handleClick}
         value={this.props.squareId}
+        id={this.props.squareId}
         className={clickClass}
         ></button>
       );
