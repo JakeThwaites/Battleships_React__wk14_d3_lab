@@ -12,7 +12,6 @@ class GridSquare extends Component {
     this.props.clickHandler(squareId);
     let button = document.getElementById(this.button);
     button.setAttribute("disabled", true);
-    console.log(button);
   }
 
   render(){
