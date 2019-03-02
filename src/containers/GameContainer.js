@@ -48,6 +48,8 @@ class GameContainer extends Component {
       <Fragment>
       <h2>Jake and Paul's Awesome Skirmish Vessels</h2>
       <GameGrid containerClickHandler={this.handleClick} currentClicks={this.state.hashOfClicks} clickable="true"/>
+      <br />
+      <GameGrid id="second-grid" containerClickHandler={this.handleClick} currentClicks={this.state.hashOfClicks} clickable="false"/>
       <Win gameWon={this.state.gameWon}/>
       </Fragment>
     );

@@ -13,7 +13,6 @@ class GameGrid extends Component {
   }
 
   render(){
-    console.log(this.props.currentClicks);
     const squares = [];
     for (var i = 0; i < 100; i++) {
       // const isClickable = {if (this.props.clickable="false") {return "disabled}"}

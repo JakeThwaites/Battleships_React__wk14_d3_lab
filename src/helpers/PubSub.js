@@ -3,7 +3,6 @@ class PubSub {
    const event = new CustomEvent(channel, {
      detail: payload
  });
-  console.log("asdfasd");
    document.dispatchEvent(event);
  }
 
