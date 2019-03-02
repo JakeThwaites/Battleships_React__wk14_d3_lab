@@ -1,6 +1,7 @@
 An app based on the guessing game 'Battleships', in which you play against the computer. Originally started as a paired programming task during an all day lab at CodeClan, and currently being expanded further. 
 
 TODO:
+Announce when a ship is sunk.
 Stop allowing guesses after the game is over.
 Add a turn system.
 Randomise starting points for where the ships are. 
