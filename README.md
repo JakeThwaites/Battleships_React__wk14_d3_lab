@@ -1,3 +1,13 @@
+An app based on the guessing game 'Battleships', in which you play against the computer. Originally started during an all day lab at CodeClan, and currently being expanded further. 
+
+TODO:
+Stop allowing guesses after the game is over.
+Add a turn system.
+Randomise starting points for where the ships are. 
+Add CSS for the display.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
